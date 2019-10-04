@@ -15,7 +15,7 @@ Public Class AvisoCumple
         Dim lector As SqlDataReader
         Dim bandera As Boolean = False
 
-        MessageBox.Show("Hola", "que paso", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
 
         Dim n As Integer
 
@@ -25,7 +25,7 @@ Public Class AvisoCumple
                 cnx.Open()
                 Using cmd As New SqlCommand()
                     cmd.Connection = cnx
-                    cmd.CommandText = "SET DATEFORMAT dmy   select Nombre, FechaC from RH_Cumpleanios where FechaC>= getdate()-1 and FechaC<= getdate() + 2 order by FechaC"
+                    cmd.CommandText = "SET DATEFORMAT dmy   select Nombre, FechaC from RH_Cumpleanios  where FechaC>= getdate()-10 and FechaC<= getdate() + 10  order by FechaC"
                     n = 0
 
                     lector = cmd.ExecuteReader
@@ -54,6 +54,8 @@ Public Class AvisoCumple
                             'Dim sonido As System.Media.SoundPlayer
                             'sonido = New System.Media.SoundPlayer(My.Application.Info.DirectoryPath + "\Sound_WAV.wav")
                             'sonido.Play()
+
+
                         Else
                             Dim dia As Integer = CDate(fecha).Date.Day
                             Dim mes As Integer = CDate(fecha).Date.Month
@@ -81,8 +83,9 @@ Public Class AvisoCumple
     Function actualizaCumple(ByVal dia, ByVal mes, ByVal anio, ByVal nombre)
 
         If anio <= CInt(Now.Date.Year) Then
-            If CInt(Now.Date.Month) >= mes Then
-                If CInt(Now.Date.Day) > dia Then
+            If (anio = CInt(Now.Date.Year) And CInt(Now.Date.Month) >= mes) Or (anio < CInt(Now.Date.Year)) Then
+                If (CInt(Now.Date.Day) > dia And
+                    CInt(Now.Date.Month) = mes) Or (CInt(Now.Date.Month) > mes) Or (anio < CInt(Now.Date.Year)) Then
                     Try
                         Using cnx = New SqlConnection("Data Source=192.168.3.254;Initial Catalog=Vistas;User ID=sa;Password=inventumc762$")
                             cnx.Open()
