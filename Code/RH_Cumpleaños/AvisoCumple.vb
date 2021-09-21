@@ -21,7 +21,7 @@ Public Class AvisoCumple
 
         Try
             m = 1
-            Using cnx = New SqlConnection("Data Source=192.168.3.254;Initial Catalog=Vistas;User ID=sa;Password=inventumc762$")
+            Using cnx = New SqlConnection("Data Source=192.168.3.254;Initial Catalog=Vistas;User ID=sa;Password=$3rv3r5q10621%")
                 cnx.Open()
                 Using cmd As New SqlCommand()
                     cmd.Connection = cnx
@@ -87,7 +87,7 @@ Public Class AvisoCumple
                 If (CInt(Now.Date.Day) > dia And
                     CInt(Now.Date.Month) = mes) Or (CInt(Now.Date.Month) > mes) Or (anio < CInt(Now.Date.Year)) Then
                     Try
-                        Using cnx = New SqlConnection("Data Source=192.168.3.254;Initial Catalog=Vistas;User ID=sa;Password=inventumc762$")
+                        Using cnx = New SqlConnection("Data Source=192.168.3.254;Initial Catalog=Vistas;User ID=sa;Password=$3rv3r5q10621%")
                             cnx.Open()
                             Using cmd As New SqlCommand()
                                 cmd.Connection = cnx
